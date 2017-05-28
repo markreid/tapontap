@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => sequelize.define('Touch', {
     primaryKey: true,
     autoIncrement: true,
   },
-  cardId: {
+  cardUid: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -22,5 +22,9 @@ module.exports = (sequelize, DataTypes) => sequelize.define('Touch', {
     type: DataTypes.DATE,
     allowNull: true,
     defaultValue: null,
+  },
+  kegId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
 });
