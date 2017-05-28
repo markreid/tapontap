@@ -66,6 +66,14 @@ const pingOntap = (req, res) => sync.ping()
   .catch(error => res.send(error));
 
 
+const simulateTouch = (req, res) => {
+  reader.processTouch({
+    uid: 'foobarqux',
+  })
+  .then(() => res.send({ success: true }));
+};
+
+
 router.get('/status', getReaderStatus);
 router.get('/touches/unsynced', getUnsyncedTouches);
 router.get('/touches/synced', getSyncedTouches);
@@ -73,5 +81,8 @@ router.get('/touches', getTouches);
 router.get('/sync', syncAllTouches);
 router.get('/ping', ping);
 router.get('/pingontap', pingOntap);
+
+// debugging only, disable this one in prod.
+router.get('/touch', simulateTouch);
 
 module.exports = router;
