@@ -21,7 +21,8 @@
     "dotenv-safe": "^4.0.4",
     "express": "^4.15.3",
     "morgan": "^1.8.2",
-    "nfc-pcsc": "github:markreid/nfc-pcsc#32799c2621b8",
+
+    "nfc-pcsc": "github:pokusew/nfc-pcsc",
     "node-fetch": "^1.7.0",
     "sequelize": "^3.30.4",
     "sqlite3": "^3.1.8",
