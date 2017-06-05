@@ -60,15 +60,16 @@ const syncAllTouches = (req, res) => db.getUnsyncedTouches()
 // simple ping response
 const ping = (req, res) => res.send({ ping: 'pong' });
 
-// ping the ontap instance and return response
+// ping the ontap instance to test for connectivity
 const pingOntap = (req, res) => sync.ping()
   .then(data => res.send(data))
   .catch(error => res.send(error));
 
 
+// eslint-disable-next-line no-unused-vars
 const simulateTouch = (req, res) => {
   reader.processTouch({
-    uid: 'foobarqux',
+    uid: '3c06736e',
   })
   .then(() => res.send({ success: true }));
 };
@@ -82,7 +83,6 @@ router.get('/sync', syncAllTouches);
 router.get('/ping', ping);
 router.get('/pingontap', pingOntap);
 
-// debugging only, disable this one in prod.
-router.get('/touch', simulateTouch);
+// router.get('/touch', simulateTouch);
 
 module.exports = router;

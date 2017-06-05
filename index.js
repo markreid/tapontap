@@ -13,7 +13,7 @@ const morgan = require('morgan');
 const logger = require('./lib/logger');
 const db = require('./lib/db');
 const api = require('./routes/api');
-
+require('./lib/reader');
 
 const app = express();
 
