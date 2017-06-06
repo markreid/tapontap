@@ -1,0 +1,38 @@
+{
+  "name": "tapontap",
+  "version": "1.0.0",
+  "description": "Control ontap with NFC tokens",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index",
+    "debug": "nodemon -- --inspect index",
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": ">=7.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/commoncode/tapontap"
+  },
+  "author": "markreid",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv-safe": "^4.0.4",
+    "express": "^4.15.3",
+    "morgan": "^1.8.2",
+
+    "nfc-pcsc": "github:pokusew/nfc-pcsc",
+    "node-fetch": "^1.7.0",
+    "sequelize": "^3.30.4",
+    "sqlite3": "^3.1.8",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "nodemon": "^1.11.0"
+  }
+}

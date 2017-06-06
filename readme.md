@@ -47,4 +47,3 @@ There are a couple of API endpoints for testing connectivity:
 Tested with an [ACS ACR-122](http://www.acs.com.hk/en/products/3/acr122u-usb-nfc-reader/), but it's using Martin Endler's [nfc-pcsc](https://github.com/pokusew/nfc-pcsc) under the hood so it should work with whatever readers it supports.
 
 It doesn't do anything tricky with the tokens apart from attempt to read their uid, so the most basic gear should work there too.
-

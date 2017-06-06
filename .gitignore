@@ -1,0 +1,5 @@
+.env
+tapontap.sqlite
+
+npm-debug.log
+node_modules/
