@@ -9,6 +9,7 @@ const db = require('../lib/db');
 const log = require('../lib/logger');
 const reader = require('../lib/reader');
 const sync = require('../lib/sync');
+const libTouches = require('../lib/touches');
 
 
 // log an error and send a 500 to the client
@@ -42,13 +43,7 @@ const getSyncedTouches = (req, res) => db.getSyncedTouches()
 
 // fetch all unsynced touches and sync them.
 // return success flag and synced count
-const syncAllTouches = (req, res) => db.getUnsyncedTouches()
-  .then((touches) => {
-    if (touches.length) {
-      return sync.syncTouches(touches);
-    }
-    return 0;
-  })
+const syncAllTouches = (req, res) => libTouches.processUnsyncedTouches()
   .then((synced) => {
     res.status(200).send({ success: true, synced });
   })

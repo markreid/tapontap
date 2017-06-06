@@ -36,3 +36,4 @@ const server = http.Server(app); // eslint-disable-line new-cap
 server.listen(process.env.PORT, () => {
   logger.info(`tapontap listening on ${process.env.PORT}`);
 });
+
