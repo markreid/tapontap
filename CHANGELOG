@@ -1,7 +1,10 @@
-# Changelog
+# CHANGELOG
 
+
+0.1.1
+-----
+* lib/cron runs processUnsyncedTouches every X seconds
 
 0.1.0
 -----
 * First release with basic functionality
-
