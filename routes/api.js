@@ -43,27 +43,32 @@ const getSyncedTouches = (req, res) => db.getSyncedTouches()
 
 // fetch all unsynced touches and sync them.
 // return success flag and synced count
-const syncAllTouches = (req, res) => libTouches.processUnsyncedTouches()
+const syncAllTouches = (req, res) => sync.processUnsyncedTouches()
   .then((synced) => {
     res.status(200).send({ success: true, synced });
   })
   .catch((error) => {
     log.error(error);
-    res.status(500).send({ success: false, error });
+    res.status(500).send({
+      success: false,
+      error: error.message,
+    });
   });
 
 // simple ping response
 const ping = (req, res) => res.send({ ping: 'pong' });
 
 // ping the ontap instance to test for connectivity
-const pingOntap = (req, res) => sync.ping()
+const pingOntap = (req, res) => sync.pingOnTap()
   .then(data => res.send(data))
-  .catch(error => res.send(error));
+  .catch(error => res.send({
+    error: error.message,
+  }));
 
 
 // eslint-disable-next-line no-unused-vars
 const simulateTouch = (req, res) => {
-  reader.processTouch({
+  libTouches.processTouch({
     uid: '3c06736e',
   })
   .then(() => res.send({ success: true }));
@@ -74,9 +79,9 @@ router.get('/status', getReaderStatus);
 router.get('/touches/unsynced', getUnsyncedTouches);
 router.get('/touches/synced', getSyncedTouches);
 router.get('/touches', getTouches);
-router.get('/sync', syncAllTouches);
 router.get('/ping', ping);
 router.get('/pingontap', pingOntap);
+router.post('/sync', syncAllTouches);
 
 // router.get('/touch', simulateTouch);
 

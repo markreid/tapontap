@@ -14,6 +14,7 @@ const logger = require('./lib/logger');
 const db = require('./lib/db');
 const api = require('./routes/api');
 require('./lib/reader');
+require('./lib/cron');
 
 const app = express();
 

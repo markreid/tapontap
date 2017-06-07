@@ -12,34 +12,16 @@ TapOnTap attempts to send each touch to OnTap as they come in, but in the case o
 
 ### Install, configure and run
 
+This has been tested and works as-is on MacOS.
+
+Getting it to run on a Raspberry Pi (Raspbian) involves a few more steps, [documented here](docs/raspberrypi.md).
+
 ```
 npm install
 cp .env.example .env
 # edit .env to configure
 npm start
 ```
-
-#### Installation on Linux
-
-On linux you'll need the pcsclite libraries and pcscd:
-
-```
-apt-get install libpcsclite1 libpcsclite-dev pcscd
-```
-
-If you're using an **ACR122** you may also need to prevent the kernel nfc drivers loading as per [this blog post](https://choffee.co.uk/posts/2015/01/nfc_reader_acr122_linux/):
-
-```
-# add these two lines to /etc/modprobe.d/rfid-blacklist.conf:
-blacklist pn533
-blacklist nfc
-
-# then run
-modprobe -r pn533 nfc
-reboot
-```
-^ these steps were required to get it running on a **Raspberry Pi Zero running Raspbian**.
-
 
 ### Network Connectivity
 
@@ -65,8 +47,10 @@ There are a couple of API endpoints for testing connectivity:
 
 ### Hardware
 
-Tested with an [ACS ACR-122](http://www.acs.com.hk/en/products/3/acr122u-usb-nfc-reader/) on MacOS and Raspbian, but it's using Martin Endler's [nfc-pcsc](https://github.com/pokusew/nfc-pcsc) under the hood so it should work with whatever readers it supports.
+Tested with an [ACS ACR-122](http://www.acs.com.hk/en/products/3/acr122u-usb-nfc-reader/) on MacOS and Raspbian. Under the hood it's using Martin Endler's [nfc-pcsc](https://github.com/pokusew/nfc-pcsc) so it should work with whatever readers that library supports.
 
 It doesn't do anything tricky with the tokens apart from attempt to read their uid, so the most basic gear should work there too.
 
-Note [these instructions](#installation-on-linux) for getting the ACR122 to run on Linux.
+Note [these instructions](docs/raspberrypi.md) for getting the ACR122 to run on Linux.
+
+#### ACR122 LED and Buzzer control
